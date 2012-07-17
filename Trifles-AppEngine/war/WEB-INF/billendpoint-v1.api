@@ -1,0 +1,207 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://myapp.appspot.com/_ah/api",
+  "name" : "billendpoint",
+  "version" : "v1",
+  "description" : "",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "http://myapp.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "billendpoint.listBill" : {
+      "path" : "bill",
+      "httpMethod" : "GET",
+      "rosyMethod" : "BillEndpoint.listBill",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "billendpoint.getBill" : {
+      "path" : "bill/{id}",
+      "httpMethod" : "GET",
+      "rosyMethod" : "BillEndpoint.getBill",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "required" : true,
+            "type" : "string"
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "billendpoint.insertBill" : {
+      "path" : "bill",
+      "httpMethod" : "POST",
+      "rosyMethod" : "BillEndpoint.insertBill",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "billendpoint.updateBill" : {
+      "path" : "bill",
+      "httpMethod" : "PUT",
+      "rosyMethod" : "BillEndpoint.updateBill",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "billendpoint.removeBill" : {
+      "path" : "bill/{id}",
+      "httpMethod" : "DELETE",
+      "rosyMethod" : "BillEndpoint.removeBill",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "required" : true,
+            "type" : "string"
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Bill" : {
+        "id" : "Bill",
+        "type" : "object",
+        "properties" : {
+          "cost" : {
+            "type" : "number"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "records" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "BillRecord"
+            }
+          }
+        }
+      },
+      "BillRecord" : {
+        "id" : "BillRecord",
+        "type" : "object",
+        "properties" : {
+          "pay" : {
+            "type" : "number"
+          },
+          "people" : {
+            "$ref" : "People"
+          },
+          "shouldPay" : {
+            "type" : "number"
+          }
+        }
+      },
+      "People" : {
+        "id" : "People",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Bills" : {
+        "id" : "Bills",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Bill"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "BillEndpoint.listBill" : {
+        "response" : {
+          "type" : "object",
+          "$ref" : "Bills"
+        }
+      },
+      "BillEndpoint.getBill" : {
+        "response" : {
+          "$ref" : "Bill"
+        }
+      },
+      "BillEndpoint.insertBill" : {
+        "request" : {
+          "$ref" : "Bill"
+        },
+        "response" : {
+          "$ref" : "Bill"
+        }
+      },
+      "BillEndpoint.updateBill" : {
+        "request" : {
+          "$ref" : "Bill"
+        },
+        "response" : {
+          "$ref" : "Bill"
+        }
+      },
+      "BillEndpoint.removeBill" : {
+        "response" : {
+          "$ref" : "Bill"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://myapp.appspot.com/_ah/api",
+  "name" : "peopleendpoint",
+  "version" : "v1",
+  "description" : "",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "http://myapp.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "peopleendpoint.listPeople" : {
+      "path" : "people",
+      "httpMethod" : "GET",
+      "rosyMethod" : "PeopleEndpoint.listPeople",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "peopleendpoint.getPeople" : {
+      "path" : "people/{id}",
+      "httpMethod" : "GET",
+      "rosyMethod" : "PeopleEndpoint.getPeople",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "required" : true,
+            "type" : "string"
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "peopleendpoint.insertPeople" : {
+      "path" : "people",
+      "httpMethod" : "POST",
+      "rosyMethod" : "PeopleEndpoint.insertPeople",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "peopleendpoint.updatePeople" : {
+      "path" : "people",
+      "httpMethod" : "PUT",
+      "rosyMethod" : "PeopleEndpoint.updatePeople",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "peopleendpoint.removePeople" : {
+      "path" : "people/{id}",
+      "httpMethod" : "DELETE",
+      "rosyMethod" : "PeopleEndpoint.removePeople",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "required" : true,
+            "type" : "string"
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "People" : {
+        "id" : "People",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Peoples" : {
+        "id" : "Peoples",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "People"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "PeopleEndpoint.listPeople" : {
+        "response" : {
+          "type" : "object",
+          "$ref" : "Peoples"
+        }
+      },
+      "PeopleEndpoint.getPeople" : {
+        "response" : {
+          "$ref" : "People"
+        }
+      },
+      "PeopleEndpoint.insertPeople" : {
+        "request" : {
+          "$ref" : "People"
+        },
+        "response" : {
+          "$ref" : "People"
+        }
+      },
+      "PeopleEndpoint.updatePeople" : {
+        "request" : {
+          "$ref" : "People"
+        },
+        "response" : {
+          "$ref" : "People"
+        }
+      },
+      "PeopleEndpoint.removePeople" : {
+        "response" : {
+          "$ref" : "People"
+        }
+      }
+    }
+  }
+}
