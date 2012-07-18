@@ -1,0 +1,9 @@
+/release
+/target
+/build
+.DS_Store
+/bin
+/gen
+/proguard
+/.pmd
+*~

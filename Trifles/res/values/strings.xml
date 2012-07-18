@@ -3,6 +3,8 @@
     <string name="app_name">Trifles</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu_add">Add</string>
     <string name="title_activity_bill_list">BillListActivity</string>
+    <string name="title_activity_select_people">Select People</string>
 
 </resources>
