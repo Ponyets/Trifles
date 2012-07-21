@@ -11,8 +11,8 @@
  */
 /*
  * This file was generated.
- *  with google-apis-code-generator 1.1.1 (build: 2012-06-25 20:14:04 UTC)
- *  on 2012-07-17 at 12:41:55 UTC 
+ *  with google-apis-code-generator 1.1.1 (build: 2012-07-19 20:57:34 UTC)
+ *  on 2012-07-20 at 11:38:53 UTC 
  */
 
 package com.appspot.api.services.peopleendpoint;

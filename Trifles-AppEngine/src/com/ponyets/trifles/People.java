@@ -7,17 +7,18 @@ import javax.persistence.Id;
 
 @Entity
 public class People {
-    String name;
+    String peopleName;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    String email;
 
-    public String getName() {
-        return name;
+    public String getPeopleName() {
+        return peopleName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPeopleName(String peopleName) {
+        this.peopleName = peopleName;
     }
 
     public Long getId() {
@@ -26,6 +27,14 @@ public class People {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

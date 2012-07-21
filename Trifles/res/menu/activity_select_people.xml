@@ -6,9 +6,18 @@
         android:showAsAction="never"
         android:title="@string/menu_settings"/>
     <item
-        android:id="@+id/menu_add"
-        android:icon="@android:drawable/ic_menu_add"
-        android:showAsAction="ifRoom|withText"
-        android:title="@string/menu_add"/>
+        android:id="@+id/menu_new"
+        android:icon="@drawable/ic_action_new_people"
+        android:onClick="onAddPeople"
+        android:orderInCategory="1"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_new"/>
+    <item
+        android:id="@+id/menu_refresh"
+        android:icon="@drawable/ic_action_refresh"
+        android:onClick="onRefresh"
+        android:orderInCategory="50"
+        android:showAsAction="always"
+        android:title="@string/menu_new"/>
 
 </menu>

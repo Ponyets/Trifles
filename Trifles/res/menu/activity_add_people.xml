@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_accept"
+        android:icon="@drawable/ic_action_accept"
+        android:onClick="onAccept"
+        android:orderInCategory="1"
+        android:showAsAction="always|withText"
+        android:title="@string/menu_accept"/>
+    <item
+        android:id="@+id/menu_cancel"
+        android:icon="@drawable/ic_action_cancel"
+        android:onClick="onCancel"
+        android:orderInCategory="2"
+        android:showAsAction="always|withText"
+        android:title="@string/menu_cancel"/>
+
+</menu>

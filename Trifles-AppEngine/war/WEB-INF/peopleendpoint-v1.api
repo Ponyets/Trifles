@@ -110,11 +110,14 @@
         "id" : "People",
         "type" : "object",
         "properties" : {
+          "email" : {
+            "type" : "string"
+          },
           "id" : {
             "type" : "string",
             "format" : "int64"
           },
-          "name" : {
+          "peopleName" : {
             "type" : "string"
           }
         }

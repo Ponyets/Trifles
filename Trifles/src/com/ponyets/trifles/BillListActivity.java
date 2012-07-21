@@ -1,21 +1,33 @@
 package com.ponyets.trifles;
 
-import android.content.Context;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.AsyncTaskLoader;
 
-import com.actionbarsherlock.app.SherlockListActivity;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
-import com.appspot.api.services.billendpoint.model.Bills;
+import com.actionbarsherlock.view.MenuItem;
+import com.google.api.client.http.HttpTransport;
+import com.ponyets.trifles.fragment.BillListFragment;
 import com.ponyets.trifles.model.UserModel;
 
-public class BillListActivity extends SherlockListActivity {
+public class BillListActivity extends SherlockFragmentActivity {
+    private UserModel mUserModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!UserModel.getInstance().isLogin()) {
+        setContentView(R.layout.activity_bill_list);
+        Logger.getLogger(HttpTransport.class.getName()).setLevel(Level.CONFIG);
+        mUserModel = UserModel.getInstance();
+        if (mUserModel.isLogin()) {
+            setTitle(mUserModel.getWhoAmI().getPeopleName());
+            BillListFragment fragment = (BillListFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.bill_list_fragment);
+            fragment.updateData();
+        } else {
             Intent intent = new Intent(this, SelectPeopleActivity.class);
             intent.putExtra("type", "login");
             startActivityForResult(intent, 0);
@@ -28,12 +40,25 @@ public class BillListActivity extends SherlockListActivity {
         return true;
     }
 
+    public void onRefresh(MenuItem item) {
+        BillListFragment fragment = (BillListFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.bill_list_fragment);
+        fragment.updateData();
+    }
+
+    public void onAddBill(MenuItem item) {
+
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
         case 0:
             if (resultCode == RESULT_OK) {
-
+                BillListFragment fragment = (BillListFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.bill_list_fragment);
+                setTitle(mUserModel.getWhoAmI().getPeopleName());
+                fragment.updateData();
             } else {
                 finish();
             }
@@ -43,18 +68,5 @@ public class BillListActivity extends SherlockListActivity {
             break;
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private static class BillLoader extends AsyncTaskLoader<Bills> {
-
-        public BillLoader(Context context) {
-            super(context);
-        }
-
-        @Override
-        public Bills loadInBackground() {
-            return null;
-        }
-
     }
 }

@@ -32,6 +32,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SelectPeopleActivity"
+            android:label="@string/title_activity_select_people" >
+        </activity>
+        <activity
+            android:name=".AddPeopleActivity"
+            android:label="@string/title_activity_add_people" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.actionbarsherlock.app.SherlockFragmentActivity" />
+        </activity>
 
         <service android:name=".GCMIntentService" />
 
@@ -49,16 +60,6 @@
                 <category android:name="com.ponyets.trifles" />
             </intent-filter>
         </receiver>
-
-        <activity
-            android:name=".SelectPeopleActivity"
-            android:label="@string/title_activity_select_people" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

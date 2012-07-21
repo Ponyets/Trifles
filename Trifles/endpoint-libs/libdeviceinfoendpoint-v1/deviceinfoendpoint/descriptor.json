@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "path": "myapp-api-deviceinfoendpoint-v1-rev20120717123808-1.7.2-beta-sources.jar", 
+      "path": "myapp-api-deviceinfoendpoint-v1-rev20120720113640-1.7.2-beta-sources.jar", 
       "type": "todo"
     }
   ], 
@@ -407,5 +407,5 @@
   ], 
   "language_version": "1.7.2-beta", 
   "id": "deviceinfoendpoint:v1", 
-  "revision": 20120717123808
+  "revision": 20120720113640
 }
