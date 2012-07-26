@@ -10,7 +10,7 @@ import com.google.api.client.json.jackson.JacksonFactory;
 public class Endpoints {
     private static final HttpTransport HTTP_TRANSPORT = AndroidHttp
             .newCompatibleTransport();
-    private static final JsonFactory JSON_FACTORY = new JacksonFactory();
+    public static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
     public static final Peopleendpoint PEOPLE_ENDPOINT = CloudEndpointUtils
             .updateBuilder(

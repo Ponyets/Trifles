@@ -8,8 +8,8 @@
 
   <groupId>com.google.apis</groupId>
   <artifactId>google-api-services-billendpoint</artifactId>
-  <version>v1-rev20120720113749-1.7.2-beta</version>
-  <name> v1 (revision 20120720113749)</name>
+  <version>v1-rev20120725095645-1.7.2-beta</version>
+  <name> v1 (revision 20120725095645)</name>
   <packaging>jar</packaging>
 
   <inceptionYear>2011</inceptionYear>

@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "path": "myapp-api-billendpoint-v1-rev20120720113749-1.7.2-beta-sources.jar", 
+      "path": "myapp-api-billendpoint-v1-rev20120725095645-1.7.2-beta-sources.jar", 
       "type": "todo"
     }
   ], 
@@ -407,5 +407,5 @@
   ], 
   "language_version": "1.7.2-beta", 
   "id": "billendpoint:v1", 
-  "revision": 20120720113749
+  "revision": 20120725095645
 }

@@ -113,12 +113,16 @@
           "cost" : {
             "type" : "number"
           },
+          "date" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "description" : {
+            "type" : "string"
+          },
           "id" : {
             "type" : "string",
             "format" : "int64"
-          },
-          "name" : {
-            "type" : "string"
           },
           "records" : {
             "type" : "array",

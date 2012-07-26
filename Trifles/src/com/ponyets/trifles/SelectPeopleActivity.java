@@ -1,16 +1,17 @@
 package com.ponyets.trifles;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,19 +36,17 @@ public class SelectPeopleActivity extends SherlockFragmentActivity implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_select_people);
         mListView = (ListView) findViewById(android.R.id.list);
         mAdapter = new PeopleArrayAdapter(this,
-                android.R.layout.simple_list_item_1);
+                android.R.layout.simple_list_item_multiple_choice);
         mListView.setAdapter(mAdapter);
         getSupportLoaderManager().initLoader(0, null, this);
-        if (Build.VERSION.SDK_INT > 10) {
-            mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
-        } else {
-            mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-        }
+        mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
         if (getIntent() != null) {
             if ("login".equals(getIntent().getStringExtra("type"))) {
+                setTitle(R.string.title_activity_whoami);
                 mListView.setChoiceMode(AbsListView.CHOICE_MODE_NONE);
                 mListView.setOnItemClickListener(new OnItemClickListener() {
                     @Override
@@ -232,6 +231,39 @@ public class SelectPeopleActivity extends SherlockFragmentActivity implements
             ((TextView) convertView.getTag()).setText(people.getPeopleName());
             return convertView;
         }
+    }
 
+    @Override
+    public void finish() {
+        if ("mutiselect".equals(getIntent().getStringExtra("type"))) {
+            ArrayList<String> list = new ArrayList<String>();
+            SparseBooleanArray checkedPositions = mListView
+                    .getCheckedItemPositions();
+            for (int i = 0, n = mAdapter.getCount(); i < n; i++) {
+                if (checkedPositions.valueAt(i)) {
+                    list.add(mAdapter.getItem(i).toString());
+                }
+            }
+            Intent intent = new Intent();
+            intent.putStringArrayListExtra("selected", list);
+            if (list.isEmpty()) {
+                setResult(RESULT_CANCELED, intent);
+            } else {
+                setResult(RESULT_OK, intent);
+            }
+        }
+        super.finish();
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            finish();
+            return true;
+
+        default:
+            break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

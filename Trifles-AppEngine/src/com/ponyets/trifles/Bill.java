@@ -1,5 +1,6 @@
 package com.ponyets.trifles;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,8 +13,9 @@ public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String name;
+    String description;
     Double cost;
+    Date date;
     List<BillRecord> records;
 
     public List<BillRecord> getRecords() {
@@ -32,12 +34,12 @@ public class Bill {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Double getCost() {
@@ -48,4 +50,11 @@ public class Bill {
         this.cost = cost;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }

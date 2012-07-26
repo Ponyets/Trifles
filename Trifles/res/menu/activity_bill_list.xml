@@ -10,12 +10,14 @@
         android:icon="@drawable/ic_action_new_bill"
         android:orderInCategory="1"
         android:showAsAction="ifRoom"
+        android:onClick="onAddBill"
         android:title="@string/menu_new"/>
     <item
         android:id="@+id/menu_refresh"
         android:icon="@drawable/ic_action_refresh"
         android:orderInCategory="50"
         android:showAsAction="always"
+        android:onClick="onRefresh"
         android:title="@string/menu_refresh"/>
 
 </menu>

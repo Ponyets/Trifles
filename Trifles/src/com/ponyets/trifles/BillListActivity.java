@@ -21,9 +21,9 @@ public class BillListActivity extends SherlockFragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_list);
         Logger.getLogger(HttpTransport.class.getName()).setLevel(Level.CONFIG);
+        // GCMIntentService.register(this);
         mUserModel = UserModel.getInstance();
         if (mUserModel.isLogin()) {
-            setTitle(mUserModel.getWhoAmI().getPeopleName());
             BillListFragment fragment = (BillListFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.bill_list_fragment);
             fragment.updateData();
@@ -47,7 +47,8 @@ public class BillListActivity extends SherlockFragmentActivity {
     }
 
     public void onAddBill(MenuItem item) {
-
+        Intent intent = new Intent(this, AddBillActivity.class);
+        startActivityForResult(intent, 1);
     }
 
     @Override
@@ -57,7 +58,6 @@ public class BillListActivity extends SherlockFragmentActivity {
             if (resultCode == RESULT_OK) {
                 BillListFragment fragment = (BillListFragment) getSupportFragmentManager()
                         .findFragmentById(R.id.bill_list_fragment);
-                setTitle(mUserModel.getWhoAmI().getPeopleName());
                 fragment.updateData();
             } else {
                 finish();

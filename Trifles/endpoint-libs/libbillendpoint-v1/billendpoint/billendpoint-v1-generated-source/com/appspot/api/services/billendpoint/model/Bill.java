@@ -15,154 +15,169 @@
 
 package com.appspot.api.services.billendpoint.model;
 
-
 import com.google.api.client.http.HttpHeaders;
 import com.google.api.client.json.GenericJson;
-import com.google.api.client.json.JsonString;
-
 
 /**
  * Model definition for Bill.
- *
- * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
- * transmitted over HTTP when working with the . For a detailed explanation see:
- * <a href="http://code.google.com/p/google-api-java-client/wiki/Json">http://code.google.com/p/google-api-java-client/wiki/Json</a>
+ * 
+ * <p>
+ * This is the Java data model class that specifies how to parse/serialize into
+ * the JSON that is transmitted over HTTP when working with the . For a detailed
+ * explanation see: <a
+ * href="http://code.google.com/p/google-api-java-client/wiki/Json"
+ * >http://code.google.com/p/google-api-java-client/wiki/Json</a>
  * </p>
- *
+ * 
  * @author Google, Inc.
  */
 public final class Bill extends GenericJson {
 
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private String date;
 
-  /**
-   * The value may be {@code null}.
-   */
-  @com.google.api.client.util.Key
-  private java.util.List<BillRecord> records;
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private java.util.List<BillRecord> records;
 
-  static {
-    // hack to force ProGuard to consider BillRecord used, since otherwise it would be stripped out
-    // see http://code.google.com/p/google-api-java-client/issues/detail?id=528
-    com.google.api.client.util.Data.nullOf(BillRecord.class);
-  }
+    static {
+        // hack to force ProGuard to consider BillRecord used, since otherwise
+        // it would be stripped out
+        // see
+        // http://code.google.com/p/google-api-java-client/issues/detail?id=528
+        com.google.api.client.util.Data.nullOf(BillRecord.class);
+    }
 
-  /**
-   * The value may be {@code null}.
-   */
-  @com.google.api.client.util.Key
-  private Double cost;
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private Double cost;
 
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private String description;
 
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private Long id;
 
-  /**
-   * The value may be {@code null}.
-   */
-  @com.google.api.client.util.Key @JsonString
-  private Long id;
+    /**
+     * 
+     * The value returned may be {@code null}.
+     */
+    public String getDate() {
+        return date;
+    }
 
+    /**
+     * 
+     * The value set may be {@code null}.
+     */
+    public Bill setDate(String date) {
+        this.date = date;
+        return this;
+    }
 
+    /**
+     * 
+     * The value returned may be {@code null}.
+     */
+    public java.util.List<BillRecord> getRecords() {
+        return records;
+    }
 
-  /**
-   * The value may be {@code null}.
-   */
-  @com.google.api.client.util.Key
-  private String name;
+    /**
+     * 
+     * The value set may be {@code null}.
+     */
+    public Bill setRecords(java.util.List<BillRecord> records) {
+        this.records = records;
+        return this;
+    }
 
+    /**
+     * 
+     * The value returned may be {@code null}.
+     */
+    public Double getCost() {
+        return cost;
+    }
 
+    /**
+     * 
+     * The value set may be {@code null}.
+     */
+    public Bill setCost(Double cost) {
+        this.cost = cost;
+        return this;
+    }
 
+    /**
+     * 
+     * The value returned may be {@code null}.
+     */
+    public String getDescription() {
+        return description;
+    }
 
-  /**
+    /**
+     * 
+     * The value set may be {@code null}.
+     */
+    public Bill setDescription(String description) {
+        this.description = description;
+        return this;
+    }
 
-   * The value returned may be {@code null}.
-   */
-  public java.util.List<BillRecord> getRecords() {
-    return records;
-  }
+    /**
+     * 
+     * The value returned may be {@code null}.
+     */
+    public Long getId() {
+        return id;
+    }
 
-  /**
+    /**
+     * 
+     * The value set may be {@code null}.
+     */
+    public Bill setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
-   * The value set may be {@code null}.
-   */
-  public Bill setRecords(java.util.List<BillRecord> records) {
-    this.records = records;
-    return this;
-  }
+    private HttpHeaders responseHeaders;
 
-  /**
+    /**
+     * Sets the HTTP headers returned with the server response, or
+     * <code>null</code>.
+     * 
+     * This member should only be non-null if this object was the top level
+     * element of a response. For example, a request that returns a single
+     * {@link Bill} would include the response headers, while a request which
+     * returns an array of {@link Bill}, would have a non-null response header
+     * in the enclosing object only.
+     */
+    public void setResponseHeaders(HttpHeaders responseHeaders) {
+        this.responseHeaders = responseHeaders;
+    }
 
-   * The value returned may be {@code null}.
-   */
-  public Double getCost() {
-    return cost;
-  }
-
-  /**
-
-   * The value set may be {@code null}.
-   */
-  public Bill setCost(Double cost) {
-    this.cost = cost;
-    return this;
-  }
-
-  /**
-
-   * The value returned may be {@code null}.
-   */
-  public Long getId() {
-    return id;
-  }
-
-  /**
-
-   * The value set may be {@code null}.
-   */
-  public Bill setId(Long id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-
-   * The value returned may be {@code null}.
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-
-   * The value set may be {@code null}.
-   */
-  public Bill setName(String name) {
-    this.name = name;
-    return this;
-  }
-
-
-  private HttpHeaders responseHeaders;
-
-  /**
-   * Sets the HTTP headers returned with the server response, or <code>null</code>.
-   *
-   * This member should only be non-null if this object was the top level element of a response. For
-   * example, a request that returns a single {@link Bill} would include the response headers, while
-   * a request which returns an array of {@link Bill}, would have a non-null response header in the
-   * enclosing object only.
-   */
-  public void setResponseHeaders(HttpHeaders responseHeaders) {
-    this.responseHeaders = responseHeaders;
-  }
-
-  /**
-   * Returns the HTTP headers that were returned with the server response, or
-   * <code>null</code>.
-   */
-  public HttpHeaders getResponseHeaders() {
-    return responseHeaders;
-  }
-
-
-
+    /**
+     * Returns the HTTP headers that were returned with the server response, or
+     * <code>null</code>.
+     */
+    public HttpHeaders getResponseHeaders() {
+        return responseHeaders;
+    }
 
 }

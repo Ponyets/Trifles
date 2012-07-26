@@ -11,8 +11,8 @@
  */
 /*
  * This file was generated.
- *  with google-apis-code-generator 1.1.1 (build: 2012-07-19 20:57:34 UTC)
- *  on 2012-07-20 at 11:37:49 UTC 
+ *  with google-apis-code-generator 1.1.1 (build: 2012-07-23 18:47:07 UTC)
+ *  on 2012-07-25 at 09:56:45 UTC 
  */
 
 package com.appspot.api.services.billendpoint;
